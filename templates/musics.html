@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа №2 {% endblock %}
+
+{% block main %}
+<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <h1>Музыканты</h1>
+    <div>SUBO - 1,4 млн. подписчиков</div>
+    <img  src="../static/subo.jpg" alt="Фотография" width="250px" height="250px">
+    <div>Виктор Цой - бесконечное число поклонников</div>
+    <img  src="../static/coi.jpg" alt="Фотография" width="250px" height="250px">
+    <div>ANNA ASTI</div>
+    <img  src="../static/anna_asti.jpg" alt="Фотография" width="250px" height="250px">
+    <div>Artik Asti</div>
+    <img  src="../static/artik_asti.jpg" alt="Фотография" width="250px" height="250px">
+    <div>Miyagi</div>
+    <img  src="../static/miyagi.jpg" alt="Фотография" width="250px" height="250px">
+{% endblock %}
