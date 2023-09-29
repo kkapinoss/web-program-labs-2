@@ -1,0 +1,29 @@
+.img {
+	display: flex;
+	margin: 0 auto;
+	width: 800px;
+	border: 3px solid #7a7a7a;
+}
+
+.header_1 {
+	color: #fff;
+	text-align: center;
+	font-size: 50px;
+}
+
+body {
+	background-color: #212121;
+	margin: 0 20px;
+}
+
+.paragraph {
+	color: #fff;
+	text-align: justify;
+	font-size: 18px;
+}
+
+.header_2 {
+	color: #fff;
+	text-align: center;
+	font-size: 25px;
+}
