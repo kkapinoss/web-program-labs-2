@@ -28,6 +28,13 @@
         <li>{{ f.name }}:{{ f.price }}</li>
         {% endfor %}
       </ul>
+
+			 <!-- Список книг -->
+			 <ul>
+				{% for b in books %}
+				<li>{{ b.name }}: {{ b.name_author }}: {{ b.zanr }}: {{ b.kol_stranits }}</li>
+				{% endfor %}
+		</ul>
     </main>
 
     <footer>

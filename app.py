@@ -197,4 +197,16 @@ def example():
 				{'name':'мандарины','price':'259₽'},
 				{'name':'манго','price':'199₽'}
 				]
-		return render_template('example.html', name=name, number=number, groupe=groupe, course=course, fruits=fruits)
+		books = [
+				{'name': 'Волчья стая', 'name_author': 'Василь Быков', 'zanr': 'Повесть', 'kol_stranits': '381'},
+				{'name': 'Четыре сезона', 'name_author': 'Стивен Кинг', 'zanr': 'Повесть', 'kol_stranits': '542'},
+				{'name': 'КлаТбище домашних животных', 'name_author': 'Стивен Кинг', 'zanr': 'Роман', 'kol_stranits': '476'},
+				{'name': 'Великий Гэтсби', 'name_author': 'Фрэнсис Скотт Фицджеральд', 'zanr': 'Роман', 'kol_stranits': '253'},
+				{'name': 'Призрак дома на холме', 'name_author': 'Ширли Джексон', 'zanr': 'Роман', 'kol_stranits': '285'},
+				{'name': 'Война и мир', 'name_author': 'Лев Толстой', 'zanr': 'Роман', 'kol_stranits': '1225'},
+				{'name': 'Мастер и Маргарита', 'name_author': 'Михаил Булгаков', 'zanr': 'Роман', 'kol_stranits': '448'},
+				{'name': 'Преступление и наказание', 'name_author': 'Федор Достоевский', 'zanr': 'Роман', 'kol_stranits': '592'},
+				{'name': 'Капитанская дочка', 'name_author': 'Александр Пушкин', 'zanr': 'Роман', 'kol_stranits': '320'},
+				{'name': 'Мой добрый папа', 'name_author': 'Виктор Голявкин', 'zanr': 'Повесть', 'kol_stranits': '200'}
+    ]
+		return render_template('example.html', name=name, number=number, groupe=groupe, course=course, fruits=fruits, books=books)
