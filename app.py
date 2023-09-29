@@ -187,4 +187,7 @@ def dagestan():
 @app.route('/lab2/example')
 def example():
 		name = 'Даниил Капинос'
-		return render_template('example.html', name=name)
+		number = '2'
+		groupe = 'ФБИ-12'
+		course = '3 курс'
+		return render_template('example.html', name=name, number=number, groupe=groupe, course=course)
