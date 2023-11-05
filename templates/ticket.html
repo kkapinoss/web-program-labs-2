@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+    <!-- Вывод результата -->
+    {% if user %}
+
+    <h1>Здравствуйте, {{ user }}</h1>
+    <h2>Ваш билет:</h2>
+
+    <div class="ticket">
+        <div>Билет: {{ departure }} - {{ entry }}</div>
+        <div>ФИО пассажира: {{user}}</div>
+        <div>Тип билета: {{type}}</div>
+        <div>Полка: {{shelf}}</div>
+        <div>Багаж: {{bag}}</div>
+        <div>Возраст пассажира: {{age}}</div>
+        <div>Пункт выезда: {{departure}}</div>
+        <div>Пункт прибытия: {{entry}}</div>
+        <div>Дата поездки: {{date}}</div>
+    </div>
+
+    <div>
+        <a href="/lab3/ticket">На главную страницу</a>
+    </div>
+
+    {% else %}
+
+    <h1>Железнодорожный билет</h1>
+    
+    <form class="pay_ticket">
+        <!-- Параметр ввода имени  -->
+        <label class="pay_text">Ваше ФИО:</label>
+
+        <div>
+            <input type="text" placeholder="Поле обязательно к заполнению" name="user" value="{{ user or '' }}">
+            <span class="error">{{ errors.user }}</span>
+        </div>
+
+        <!-- Параметр ввода типа -->
+        <label class="pay_text">Тип билета:</label>
+
+        <div>
+            <select name="type">
+                <option value="Детский" {{ type == 'child' and 'selected' }}>детский</option>
+                <option value="Взрослый" {{ type == 'adalt' and 'selected' }}>взрослый</option>
+            </select>
+        </div>
+
+        <!-- Параметр ввода полки -->
+        <label class="pay_text">Полка:</label>
+
+        <div>
+            <select name="shelf">
+                <option value="Нижняя" {{ shelf == 'down' and 'selected' }}>нижняя</option>
+                <option value="Верхняя" {{ shelf == 'hight' and 'selected' }}>верхняя</option>
+                <option value="Верхняя-боковая" {{ shelf == 'hight-side' and 'selected' }}>верхняя-боковая</option>
+                <option value="Нижняя-боковая" {{ shelf == 'down-side' and 'selected' }}>нижняя-боковая</option>
+            </select>
+        </div>
+
+        <!-- Параметр ввода багажа -->
+        <label class="pay_text">Багаж:</label>
+
+        <div>
+            <label>
+                <input type="radio" value="Имеется" name="bag" checked>Есть
+            </label>
+            <label>
+                <input type="radio" value="Отсутствует" name="bag" checked>Нету
+            </label>
+        </div>
+
+        <!-- Параметр ввода возраста -->
+        <label class="pay_text">Ваш возраст:</label>
+
+        <div>
+            <input type="number" name="age" min="18" max="120">
+            <span class="error">{{ errors.age }}</span>
+        </div>
+
+        <!-- Параметр ввода пункта выезда  -->
+        <label class="pay_text">Пункт выезда:</label>
+
+        <div>
+            <input type="text" placeholder="Поле обязательно к заполнению" name="departure" value="{{ departure or '' }}">
+            <span class="error">{{ errors.departure }}</span>
+        </div>
+
+        <!-- Параметр ввода пункта прибытия  -->
+        <label class="pay_text">Пункт прибытия:</label>
+
+        <div>
+            <input type="text" placeholder="Поле обязательно к заполнению" name="entry" value="{{ entry or '' }}">
+            <span class="error">{{ errors.entry }}</span>
+        </div>
+
+        <!-- Параметр ввода даты  -->
+        <label class="pay_text">Дата:</label>
+        <p><input type="date" name="date" value="{{ date or '' }}"></p>
+        <span class="error">{{ errors.date }}</span>
+
+        <!-- Кнопка вывода -->
+        <div>
+            <button type="submit" class="pay_btn">Сформировать билет</button>
+        </div>
+    </form>
+    {% endif %}
+{% endblock %}
