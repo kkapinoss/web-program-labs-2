@@ -59,7 +59,6 @@ def ticket():
     errors = {}
     #Перкменная "ФИО"
     user = request.args.get('user')
-        #Если поле ввода "ФИО" будет пустым, то выскочит надпись ошибка.
     if user == '':
         errors['user'] = 'Заполните поле!'
     #Переменна "Тип билета"
@@ -70,22 +69,18 @@ def ticket():
     bag = request.args.get('bag')
     #Переменная "Возраст"
     age = request.args.get('age')
-        #Если поле ввода "Возраст" будет пустым, то выскочит надпись ошибка.
     if age == '':
         errors['age'] = 'Заполните поле!'
-    #Перкменная "Пункт отправления"
+    #Переменная "Пункт отправления"
     departure = request.args.get('departure')
-        #Если поле ввода "Пункт отправления" будет пустым, то выскочит надпись ошибка.
     if departure == '':
         errors['departure'] = 'Заполните поле!'
-    #Перкменная "Пункт прибытия"
+    #Переменная "Пункт прибытия"
     entry = request.args.get('entry')
-        #Если поле ввода "Пункт прибытия" будет пустым, то выскочит надпись ошибка.
     if  entry == '':
         errors['entry'] = 'Заполните поле!'
     #Переменная "Дата"
     date = request.args.get('date')
-        #Если поле ввода "Дата" будет пустым, то выскочит надпись ошибка.
     if  date == '':
         errors['date'] = 'Заполните поле!'
     return render_template('ticket.html', user=user, errors=errors, type=type, shelf=shelf, bag=bag, age=age, departure=departure,entry=entry, date=date)
