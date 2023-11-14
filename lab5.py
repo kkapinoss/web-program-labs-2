@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, redirect, session
 import psycopg2
 
 lab5 = Blueprint('lab5', __name__)
@@ -53,3 +53,38 @@ def user():
     cur.execute("SELECT * From users;")
     result=cur.fetchall()
     return render_template('users.html', users=result)
+
+
+# Роут регистрации пользователя
+@lab5.route('/lab5/register', methods=['GET', 'POST'])
+def registerPage():
+    errors=""
+
+    if request.method=='GET':
+        return render_template('register.html', errors=errors)
+
+    username=request.form.get('username')
+    password=request.form.get('password')
+
+    if not (username and password):
+        errors=[]
+        errors='please, fill the fields'
+        print(errors)
+        return render_template('register.html', errors=errors)
+
+    conn=dbConnect()
+    cur=conn.cursor()
+
+    cur.execute(f"SELECT username From users where username='{username}';")
+
+    if cur.fetchone() is not None:
+        errors.append('the user already exists')
+        dbClose(cur,conn)
+        return render_template('register.html', errors=errors)
+
+    cur.execute(f"INSERT INTO users (username, password) VALUES ('{username}','{password}');")
+
+    conn.commit
+    dbClose(cur,conn)
+
+    return redirect ('/lab5/login')
