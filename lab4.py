@@ -63,3 +63,61 @@ def fridge1():
         snowflakes = ''
     message = f'Установлена температура: {temperature}°С'
     return render_template('success_fridge_4.html', message=message, snowflakes=snowflakes)
+
+
+#Роут заказа зерна
+@lab4.route('/lab4/corn_4', methods = ['GET','POST'])
+def corn():
+    return render_template('corn_4.html')
+
+
+#Роут успешного оформления заказа зерна
+@lab4.route('/lab4/success_corn_4',methods = ['GET','POST'])
+def corn1():
+    corn = request.form.get('corn') 
+    weight = request.form.get('weight') 
+    weight = int(weight)
+    
+    if weight > 500:
+        error = 'Такого объёма сейчас нет в наличии'
+        return render_template('corn_4.html', weight=weight, error=error)
+    if weight <=0:
+        error = 'Неверное значение веса'
+        return render_template('corn_4.html', weight=weight, error=error)
+    
+    if corn == 'Ячмень':
+        corn = 'Ячмень'
+        money = 12000 * weight
+        discount = ''
+        if weight >50:
+            discount = 'Применена скидка за большой объём'
+            money = money * 0.9
+        return render_template('success_corn_4.html', weight=weight, money=money, discount=discount,corn=corn)
+    
+    if corn == 'Овёс':
+        corn = 'Овёс'
+        money = 8500 * weight
+        discount = ''
+        if weight >50:
+            discount = 'Применена скидка за большой объём'
+            money = money * 0.9
+        return render_template('success_corn_4.html', weight=weight, money=money, discount=discount,corn=corn)
+    
+    if corn == 'Пшеница':
+        corn = 'Пшеница'
+        money = 8700 * weight
+        discount = ''
+        if weight >50:
+            discount = 'Применена скидка за большой объём'
+            money = money * 0.9
+        return render_template('success_corn_4.html', weight=weight, money=money, discount=discount,corn=corn)
+    
+    if corn == 'Рожь':
+        corn = 'Рожь'
+        money = 14000 * weight
+        discount = ''
+        if weight >50:
+            discount = 'Применена скидка за большой объём'
+            money = money * 0.9
+        return render_template('success_corn_4.html', weight=weight, money=money, discount=discount,corn=corn)
+    return render_template('success_corn_4.html', corn=corn, weight=weight)

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 4 {% endblock %}
+
+{% block main %}
+    <h1>Заказ успешно сформирован.</h1>
+    <h2>Вы заказали {{ corn }}. Вес: {{ weight }} т.</h2>
+    <h3>Сумма к оплате: {{ money }} руб.</h3>
+    <h4>{{ discount }}</h4>
+    <a href="/lab4/corn_4" class="button_order">На страницу заказа</a>
+{% endblock %}

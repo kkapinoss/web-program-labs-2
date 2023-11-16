@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 4 {% endblock %}
+
+{% block main %}
+    <h1>Заказ зерна</h1>
+    <form action="/lab4/success_corn_4" method="post">
+        <!-- Параметр ввода полки -->
+        <label>Зерно:</label>
+
+        <div>
+            <select name="corn">
+                <option value="Ячмень">Ячьмень</option>
+                <option value="Овёс">Овёс</option>
+                <option value="Пшеница">Пшеница</option>
+                <option value="Рожь">Рожь</option>
+            </select>
+        </div>
+
+        <!-- Поле ввода веса -->
+        <label>Вес:</label>
+        <div>
+            <input type="number" name="weight" placeholder="Масса нетто" >
+            <span class="errors">{{ error }}</span>
+        </div>
+        <!-- Кнопка вывода -->
+        <div>
+            <button type="submit">Оформить заказ</button>
+        </div>
+    </form>
+{% endblock %}
