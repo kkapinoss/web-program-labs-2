@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 4 {% endblock %}
+
+{% block main %}
+    <h1>Холодильник</h1>
+    <form action="/lab4/success_fridge_4" method="post">
+        <label>Поле для ввода температуры:</label>
+        <!-- Поле ввода темепературы -->
+        <div>
+            <input type="number" name="temperature" placeholder="Температура">
+        </div>
+        <!-- Кнопка вывода -->
+        <div>
+            <button type="submit">Установить температуру</button>
+        </div>
+    </form>
+{% endblock %}

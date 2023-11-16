@@ -31,4 +31,35 @@ def login():
     else:
         error = 'Неверный логин или пароль'
         return render_template('login_4.html', error=error, username=username, password=password)
-    
+
+
+#Роут ввода температуры для холодильника
+@lab4.route('/lab4/fridge_4',methods = ['GET','POST'])
+def fridge():
+    return render_template('fridge_4.html')
+
+#Роут вывода холодильника
+@lab4.route('/lab4/success_fridge_4',methods = ['GET','POST'])
+def fridge1():
+    temperature = request.form.get('temperature') 
+    temperature = int(temperature)
+    if not temperature:
+        message = 'Ошибка: не задана температура'
+        return render_template('success_fridge_4.html', message=message)
+
+    if temperature < -12:
+        message = 'Не удалось установить температуру — слишком низкое значение'
+        return render_template('success_fridge_4.html', message=message)
+    elif temperature > -1:
+        message = 'Не удалось установить температуру — слишком высокое значение'
+        return render_template('success_fridge_4.html', message=message)
+    elif -12 <= temperature <= -9:
+        snowflakes = 'три синих снежинки'
+    elif -8 <= temperature <= -5:
+        snowflakes = 'две синих снежинки'
+    elif -4 <= temperature <= -1:
+        snowflakes = 'одна синяя снежинка'
+    else:
+        snowflakes = ''
+    message = f'Установлена температура: {temperature}°С'
+    return render_template('success_fridge_4.html', message=message, snowflakes=snowflakes)
