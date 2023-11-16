@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, make_response
 lab4 = Blueprint('lab4', __name__)
 
 
@@ -121,3 +121,48 @@ def corn1():
             money = money * 0.9
         return render_template('success_corn_4.html', weight=weight, money=money, discount=discount,corn=corn)
     return render_template('success_corn_4.html', corn=corn, weight=weight)
+
+
+@lab4.route('/lab4/cookies', methods=['GET', 'POST'])
+def cookies():
+    mes=''
+    resp = make_response(render_template('cookies.html'))
+    color = request.form.get('color')
+    b_color = request.form.get('background-color')
+    f_size = request.form.get('font-size')
+
+    if color and b_color and f_size:
+        if color == b_color:
+            mes='поменяйте цвета'
+            return make_response(render_template('cookies.html', mes=mes))
+
+        resp.set_cookie('color', color)
+        resp.set_cookie('background-color', b_color)
+        resp.set_cookie('font-size', f"{f_size}px")
+    return resp
+    
+    return 'waiting for parameters'
+
+
+# @lab4.route('/lab4/cookies', methods = ['GET', 'POST'])
+# def cookies():
+#     if request.method == 'GET':
+#         return render_template('cookies.html')
+    
+#     color = request.form.get('color')
+#     background = request.form.get('background')
+#     font_size = request.form.get('font-size')
+#     headers = {
+#         'Set-Cookie': 'color=' + color + '; path=/',
+#         'Location': '/lab4/cookies'
+#     }
+#     headers = {
+#         'Set-Cookie': 'background=' + background + '; path=/',
+#         'Location': '/lab4/cookies'
+#     }
+#     headers = {
+#         'Set-Cookie': 'font-size=' + font_size + '; path=/',
+#         'Location': '/lab4/cookies'
+#     }
+#     return '', 303, headers
+    
