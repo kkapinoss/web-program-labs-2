@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+
+<div>Задание №1</div>
+{% if N and X %}
+
+{{result2}}
+
+{% else %}
+
+<form>
+	<ol>
+		<li>
+				<label>Введите значение X:</label>
+				<input type="number" name="X" min="1" max="120">
+		</li>
+		<li>
+			<label>Введите значение N:</label>
+			<input type="number" name="N" min="1" max="120">
+		</li>
+	</ol>
+	
+    <div>
+        <button type="submit">Рассчитать</button>
+    </div>
+</form>
+
+{% endif %}
+<div>Задание №2</div>
+{% if A and B and C and D %}
+
+{{result}}
+
+{% else %}
+<form>
+<ol>
+    <li>
+        <label>Введите значение А:</label>
+        <input type="number" name="A" min="1" max="120">
+    </li>
+    <li>
+        <label>Введите значение В:</label>
+        <input type="number" name="B" min="1" max="120">
+    </li>
+    <li>
+        <label>Введите значение С:</label>
+        <input type="number" name="C" min="1" max="120">
+    </li>
+    <li>
+        <label>Введите значение D:</label>
+        <input type="number" name="D" min="1" max="120">
+    </li>
+</ol>
+
+<div>
+    <button type="submit">Определить номер числа</button>
+</div>
+</form>
+{% endif %}
+    
+
+{% endblock %}

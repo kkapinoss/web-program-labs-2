@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, request
-lab3 = Blueprint('lab3', __name__)
+from flask import Blueprint, redirect, url_for, render_template, request
+lab3 = Blueprint('lab3',__name__)
 
 #Роут "Лабораторная работа№3"
 @lab3.route('/lab3/')
@@ -84,3 +84,47 @@ def ticket():
     if  date == '':
         errors['date'] = 'Заполните поле!'
     return render_template('ticket.html', user=user, errors=errors, type=type, shelf=shelf, bag=bag, age=age, departure=departure,entry=entry, date=date)
+
+
+# Защита 3 лабораторной работы 
+
+from math import factorial
+@lab3.route('/lab3/zashita')
+def zashita2():
+    N = request.args.get('N')
+    X = request.args.get('X')
+
+    result2 = 0
+    if N and X:
+        N = int(N)
+        X = float(X)
+
+        result2 = X
+
+        for i in range(N):
+            result2 += (((-1**i)*(X**(2*i+1)))/(factorial(2*i+1)))
+    else:
+        result2 = -1
+    print(f"xxxxxx {result2}") 
+    return render_template('/zac_3.html', result2 = result2, N=N, X=X)
+
+
+@lab3.route('/lab3/zashita1')
+def zashita():
+    ##Второе задание##
+    A = request.args.get('A'),
+    B = request.args.get('B'),
+    C = request.args.get('C'),
+    D = request.args.get('D')
+
+    if A == B and A == C and A == D:
+        result = 'Все числа равны'
+    elif A == B and A == C:
+        result = 4
+    elif A == B and A == D:
+        result = 3
+    elif B == C and B == D:
+        result = 2
+    else:
+        result = 1
+    return render_template('/zac_3.html', result = result, A=A, B=B, C=C, D=D)
