@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block lab %}Laboratory work 7{% endblock %}
+
+{%block script%}
+    <script src="{{url_for('static', filename='lab7/drink.js')}}"></script>
+{%endblock%}
+
+{% block main %}
+    <H1>Заказ напитка</H1> 
+
+        <div>Напиток:</div>
+        <label>
+            <input type="radio" value="coffee" name="drink" checked>кофе
+        </label>
+        <label>
+            <input type="radio" value="black tea" name="drink" checked>черный чай
+        </label>
+        <label>
+            <input type="radio" value="green tea" name="drink" checked>зеленый чай
+        </label>
+
+        <div>Добавки:</div>
+        <label>
+            <input type="checkbox" name="milk">молоко
+        </label>
+        <label>
+            <input type="checkbox" name="sugar">сахар
+        </label>
+
+        <div>
+            <button onclick="getPrice()">Рассчитать цену</button>
+        </div>
+
+        <div id='price'>{{price}}</div>
+
+
+        <div id="pay" style="display:none;">
+            <div>Номер карты:</div>
+            <label>
+                <input type="text" name="card_num">
+            </label>
+
+            <div>Имя:</div>
+            <label>
+                <input type="text" name="name">
+            </label>
+
+            <div>cvv:</div>
+            <label>
+                <input type="text" name="cvv" size="3">
+            </label>
+
+            <div>
+                <button onclick="pay()">Оплатить</button>
+            </div>
+           
+        </div>
+    
+        <div id="refund" style="display:none;">
+        <p></p>
+            <div>Если вам не понравился напиток, вы можете вернуть деньги. 
+                <p>Но мы вам не советуем!</p>
+            </div>
+        <div>Номер карты:</div>
+            <label>
+                <input type="text" name="card_num">
+            </label>
+
+            <div>Имя:</div>
+            <label>
+                <input type="text" name="name">
+            </label>
+
+            <div>cvv:</div>
+            <label>
+                <input type="text" name="cvv" size="3">
+            </label>
+
+        <div>
+            <button onclick="refund()">вернуть</button>
+        </div>
+        </div>
+{%endblock%}
