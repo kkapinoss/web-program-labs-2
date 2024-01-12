@@ -17,6 +17,7 @@ courses=[
 def get_courses():
     return jsonify (courses)
 
+
 @lab8.route('/lab8/api/courses/<int:course_num>', methods=['GET'])
 def get_courses2(course_num):
     
@@ -25,6 +26,7 @@ def get_courses2(course_num):
     else:
         return abort(404)
     
+
 @lab8.route('/lab8/api/courses/<int:course_num>', methods=['DELETE'])
 def get_courses3(course_num):
 
@@ -34,6 +36,7 @@ def get_courses3(course_num):
      else:
          return abort(404)
      
+
 @lab8.route('/lab8/api/courses/<int:course_num>', methods=['PUT'])
 def put_courses3(course_num):
     course=request.get_json()
@@ -43,3 +46,11 @@ def put_courses3(course_num):
         return courses[course_num] 
     else:
         return abort(404)
+    
+
+@lab8.route('/lab8/api/courses/', methods=['POST'])
+def add_course():
+    course = request.get_json()
+    courses.append(course)
+    course["date_"] = datetime.datetime.now().strftime('%Y-%m-%d')
+    return {"num": len(courses)-1}
