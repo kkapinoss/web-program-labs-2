@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block lab %}Laboratory work 9{% endblock %}
+
+{% block main %}
+<div style="align-self:center;" class="card">
+{% if gender == 'male' %}
+    <div>Поздравляю с наступающим новым годом, {{ user }}!</div>
+    <div>Желаю тебе в новом году, чтобы прибыль только росла!</div>
+    <div>С приветом, {{ user2 }} </div>
+{% endif %}
+{% if gender == 'female' %}
+    <div>Поздравляю с наступающим новым годом, {{ user }}!</div>
+    <div>Желаю тебе в новом году, чтобы все мечты твои сбылись!</div>
+    <br><br>
+    <div>С любовью, {{ user2 }} </div>
+{% endif %}
+</div>
+<img style="margin-left: auto;
+margin-right: auto; display: block;" src="/static/New_year.jpg" width="1000px">
+{%endblock%}

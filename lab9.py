@@ -19,7 +19,7 @@ def not_found(err):
 
 @lab9.route('/lab9/500')
 def server_error():
-    raise Exception("Произошла некоторая ошибка")
+    raise Exception("Произошла ошибка")
 
 
 @lab9.app_errorhandler(Exception)
